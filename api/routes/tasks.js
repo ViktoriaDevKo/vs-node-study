@@ -14,7 +14,7 @@ router.post('/', (req, res, next)=>{
 });
 
 router.get('/:taskId', (req, res, next)=>{
-    const id = req.params.accountId;
+    const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
             message: "/task/sp  get request",
@@ -22,7 +22,7 @@ router.get('/:taskId', (req, res, next)=>{
         });
     }else{
         res.status(200).json({
-            message: "/task/  get request",
+            message: "/tasks/  get request",
             id: id
         });
     }
@@ -30,7 +30,7 @@ router.get('/:taskId', (req, res, next)=>{
 });
 
 router.patch('/:taskId', (req, res, next)=>{
-    const id = req.params.accountId;
+    const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
             message: "/task/sp  patch request",
@@ -46,7 +46,7 @@ router.patch('/:taskId', (req, res, next)=>{
 });
 
 router.delete('/:taskId', (req, res, next)=>{
-    const id = req.params.accountId;
+    const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
             message: "/task/sp  delete request",
