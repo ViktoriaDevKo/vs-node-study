@@ -1,0 +1,19 @@
+{
+  "name": "node-app-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViktoriaDevKo/vs-node-study.git"
+  },
+  "author": "ViktoriaDevKo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ViktoriaDevKo/vs-node-study/issues"
+  },
+  "homepage": "https://github.com/ViktoriaDevKo/vs-node-study#readme"
+}
