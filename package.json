@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ViktoriaDevKo/vs-node-study/issues"
   },
-  "homepage": "https://github.com/ViktoriaDevKo/vs-node-study#readme"
+  "homepage": "https://github.com/ViktoriaDevKo/vs-node-study#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
