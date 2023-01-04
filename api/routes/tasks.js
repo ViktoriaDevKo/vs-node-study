@@ -3,17 +3,17 @@ const router = express.Router();
 
 router.get('/', (req, res, next)=>{
     res.status(200).json({
-        message: "/task/all/  get request"
+        message: "/task/  get request"
     });
 });
 
 router.post('/', (req, res, next)=>{
     res.status(200).json({
-        message: "/task/all/  post request"
+        message: "/task/ post request"
     });
 });
 
-router.get('/:taskId', (req, res, next)=>{
+router.get('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
@@ -29,7 +29,7 @@ router.get('/:taskId', (req, res, next)=>{
     
 });
 
-router.patch('/:taskId', (req, res, next)=>{
+router.patch('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
@@ -45,7 +45,7 @@ router.patch('/:taskId', (req, res, next)=>{
     
 });
 
-router.delete('/:taskId', (req, res, next)=>{
+router.delete('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     if (id === 'sp'){
         res.status(200).json({
