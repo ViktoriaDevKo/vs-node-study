@@ -8,6 +8,7 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
+   //creating an acc throug main page
     const account = {
         name: req.body.name,
         email: req.body.email
