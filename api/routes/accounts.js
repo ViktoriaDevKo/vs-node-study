@@ -8,8 +8,14 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
+    const account = {
+        name: req.body.name,
+        email: req.body.email
+    };
+
     res.status(200).json({
-        message: "/accounts/  post request"
+        message: "/accounts/  post request",
+        createdAccount: account
     });
 });
 
