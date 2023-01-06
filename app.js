@@ -26,18 +26,17 @@ app.use((req, res, next)=>{
     next();
 });
 
-//middleware
+//middleware handling url routes 
 app.use('/accounts', accountsRoutes);
 app.use('/tasks', tasksRoutes);
 app.use('/tasks/regular', regularTasksRoutes);
 
-//error handling block
+//basic error handling block
 app.use((req,res,next)=>{
     const error = new Error("Not found");
     error.status = 404;
     next(error);
 });
-
 
 app.use((error, req, res, next)=>{
     res.status(error.status || 500 );

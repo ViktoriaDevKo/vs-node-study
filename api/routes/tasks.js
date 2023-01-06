@@ -8,7 +8,7 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
-    //adding a new task
+    //adding a new task on the main page
     const task  = {
         name: req.body.name,
         type: req.body.type,
