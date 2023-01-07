@@ -2,6 +2,17 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+//mongodb://localhost:27017
+//
+mongoose.connect( "mongodb://localhost:27017/node-test",
+    {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true
+    }
+)
+
 
 
 const accountsRoutes = require('./api/routes/accounts');
