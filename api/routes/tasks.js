@@ -8,14 +8,15 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
-    //adding a new task
+    //adding a new task on the main page
     const task  = {
         name: req.body.name,
         type: req.body.type,
         desscription: req.body.desscription
     }
     res.status(200).json({
-        message: "/task/ post request"
+        message: "/task/ post request",
+        createdTask : task
     });
 });
 
