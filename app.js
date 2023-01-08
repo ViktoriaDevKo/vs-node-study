@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //mongodb://localhost:27017
 //
-mongoose.connect( "mongodb://localhost:27017/node-test",
+mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
     {
         useNewUrlParser: true,
         useFindAndModify: false,
