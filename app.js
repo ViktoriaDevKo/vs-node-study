@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //mongodb://localhost:27017
 //
 mongoose.set('strictQuery', false);
-mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
+mongoose.connect( process.env.MONGO_ATLAS_ADDRES,
     {
         useNewUrlParser: true,
       //  useFindAndModify: false,
