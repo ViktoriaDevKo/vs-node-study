@@ -1,8 +1,9 @@
 {
     "env":{
-        "MONGO_DB_LOCAL_ADRRESS": "mongodb://localhost:27017",
+        "MONGO_DB_LOCAL_ADRRESS": "mongodb://localhost:27017//users/users",
         "ACCOUNT_SCHEME":"/",
         "TASK_SCHEME":"/tasks",
-        "REG_TASKS_SCHEME":"/"
+        "REG_TASKS_SCHEME":"/",
+        "USER_SCHEME":"/user"
     }
 }
