@@ -3,7 +3,6 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-//mongodb://localhost:27017
 //
 mongoose.set('strictQuery', false);
 mongoose.connect( process.env.MONGO_ATLAS_ADDRES,
@@ -11,8 +10,7 @@ mongoose.connect( process.env.MONGO_ATLAS_ADDRES,
         useNewUrlParser: true,
       //  useFindAndModify: false,
         useUnifiedTopology: true
-    }
-);
+    });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
