@@ -5,16 +5,22 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //mongodb://localhost:27017
 //
-mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS+TASK_SCHEME,
+mongoose.set('strictQuery', false);
+mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
     {
         useNewUrlParser: true,
-        useFindAndModify: false,
+      //  useFindAndModify: false,
         useUnifiedTopology: true
     }
-)
+);
 
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
 
-
+const userdRoutes = require('./api/routes/users');
 const accountsRoutes = require('./api/routes/accounts');
 const tasksRoutes = require('./api/routes/tasks');
 const regularTasksRoutes = require('./api/routes/regularTasks');
@@ -41,6 +47,8 @@ app.use((req, res, next)=>{
 app.use('/accounts', accountsRoutes);
 app.use('/tasks', tasksRoutes);
 app.use('/tasks/regular', regularTasksRoutes);
+app.use('/users',userdRoutes);
+
 
 //basic error handling block
 app.use((req,res,next)=>{
