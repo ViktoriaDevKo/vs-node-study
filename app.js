@@ -18,7 +18,7 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-const userdRoutes = require('./api/routes/users');
+const usersRoutes = require('./api/routes/users');
 const accountsRoutes = require('./api/routes/accounts');
 const tasksRoutes = require('./api/routes/tasks');
 const regularTasksRoutes = require('./api/routes/regularTasks');
@@ -45,7 +45,7 @@ app.use((req, res, next)=>{
 app.use('/accounts', accountsRoutes);
 app.use('/tasks', tasksRoutes);
 app.use('/tasks/regular', regularTasksRoutes);
-app.use('/users',userdRoutes);
+app.use('/users',usersRoutes);
 
 
 //basic error handling block
