@@ -18,19 +18,19 @@ router.get('/', (req, res, next)=>{
     });
 });
 
+ //adding a new task on the main page and through add new button
 router.post('/', (req, res, next)=>{
-    //adding a new task on the main page
     const task = new Task({
         _id: new mongoose.Types.ObjectId,
         task: req.body.task,
         type: req.body.type,
         description: req.body.description,
-        datePerf: req.body.datePerf,
+        datePerf: new Date(req.body.datePerf),
         priority: req.body.priority,
         _id_Account: req.body.AccID, 
         tags: req.body.tags
 });
-    Task
+    task
         .save()
         .then(result =>{
             console.log(result);

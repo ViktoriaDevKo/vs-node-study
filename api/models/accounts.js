@@ -10,4 +10,4 @@ const acountSchema = mongoose.Schema({
     tags: Array
 });
 
-module.exports = mongoose.model('Account', acountSchema);
+module.exports = mongoose.model('Accounts', acountSchema);
