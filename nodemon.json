@@ -1,9 +1,10 @@
 {
     "env":{
-        "MONGO_DB_LOCAL_ADRRESS": "mongodb://localhost:27017//users/users",
-        "ACCOUNT_SCHEME":"mongodb://localhost:27017/acconts",
-        "TASK_SCHEME":"mongodb://localhost:27017/tasks",
-        "REG_TASKS_SCHEME":"mongodb://localhost:27017/regTasks",
-        "USER_SCHEME":"mongodb://localhost:27017/users"
+        "MONGO_DB_LOCAL_ADRRESS": "mongodb://localhost:num/",
+        "MONGO_ATLAS_ADDRES": "mongodb+srv://admin:<pswd>@cluster0.6khsvhh.mongodb.net/?retryWrites=true&w=majority",
+        "ACCOUNT_SCHEME":"/accounts",
+        "TASK_SCHEME":"/tasks",
+        "REG_TASKS_SCHEME":"/regularTasks",
+        "USER_SCHEME":"/users"
     }
 }

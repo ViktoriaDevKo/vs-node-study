@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-
-
 const acountSchema = mongoose.Schema({
     _id_User: mongoose.Types.ObjectId,
     _id: mongoose.Types.ObjectId,
