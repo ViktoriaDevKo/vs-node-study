@@ -12,4 +12,4 @@ const taskSchema = mongoose.Schema({
     tags: Array
 });
 
-module.exports = mongoose.model('Tasks', taskSchema);
+module.exports = mongoose.model('RegularTasks', taskSchema);

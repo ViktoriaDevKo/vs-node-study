@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //
 mongoose.set('strictQuery', false);
-mongoose.connect( process.env.MONGO_ATLAS_ADDRES,
+mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
     {
         useNewUrlParser: true,
       //  useFindAndModify: false,
