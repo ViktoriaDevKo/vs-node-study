@@ -21,6 +21,8 @@ router.get('/', (req, res, next)=>{
 });
 
 //for loging in 
+//TODO: Add mechanism to store current user id in localstorage in order to further link it to the tasks
+//by the end of the session(or logging out) delete from there
 router.get('/:userId', (req, res, next)=>{
     const id = req.params.userId;
     User.findById(id)
@@ -43,9 +45,11 @@ router.get('/:userId', (req, res, next)=>{
 });
 
 //for registration 
-//TODO: Add 
+//TODO: Add crypting of the password 
+//(hashing w. salt can do just think it through)
+
 router.post('/', (req, res, next)=>{
-    //adding a new task on the main page
+    //adding a new user on the registration page page
     const user = new User({
         _id: new mongoose.Types.ObjectId,
         login: req.body.login,
