@@ -51,49 +51,60 @@ router.post('/', (req, res, next)=>{
 
 router.get('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
-    if (id === 'sp'){
-        res.status(200).json({
-            message: "/task/all/sp  get request",
-            id: id
-        });
-    }else{
-        res.status(200).json({
-            message: "/tasks/all/  get request",
-            id: id
-        });
-    }
+    Task.findById(id)
+    .exec()
+    .then(doc => {
+        console.log("From database", doc);
+        if(doc){
+            res.status(200).json(doc);
+        }else{
+            res.status(404).json({ message: "No valid entry found for provided id"});
+        }
+        
+    })
+    .catch(err =>{
+        console.log(err);
+        res.status(500).json({error: err});
+    });
+
+    
     
 });
 
 router.patch('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
-    if (id === 'sp'){
-        res.status(200).json({
-            message: "/task/all/sp  patch request",
-            id: id
-        });
-    }else{
-        res.status(200).json({
-            message: "/task/all/  patch request",
-            id: id
-        });
+    const updateOps = {};
+    for(const ops of req.body){
+        updateOps[ops.propName] = ops.value;
     }
+
+    Task.updateOne({
+        _id: id
+    }, {$set: updateOps} )
+    .exec()
+    .then(result =>{
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err})
+    });
     
 });
 
 router.delete('/all/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
-    if (id === 'sp'){
-        res.status(200).json({
-            message: "/task/all/sp  delete request",
-            id: id
-        });
-    }else{
-        res.status(200).json({
-            message: "/task/all/  delete request",
-            id: id
-        });
-    }
+    Task.remove({
+        _id: id
+    })
+    .exec()
+    .then(result =>{
+        res.status(200).json(result);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err})
+    });
     
 });
 
