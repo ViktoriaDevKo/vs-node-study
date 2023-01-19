@@ -5,7 +5,8 @@ const acountSchema = mongoose.Schema({
     _id: mongoose.Types.ObjectId,
     resourceName: String,
     login: String,
-    password: String,
+    salt: String,
+    hash : String,
     type: String,
     tags: Array
 });

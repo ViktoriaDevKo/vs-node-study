@@ -47,13 +47,16 @@ router.get('/:userId', (req, res, next)=>{
 //for registration 
 //TODO: Add crypting of the password 
 //(hashing w. salt can do just think it through)
-
+//TODO salt generator, coder function and decoder function
 router.post('/', (req, res, next)=>{
     //adding a new user on the registration page page
     const user = new User({
         _id: new mongoose.Types.ObjectId,
         login: req.body.login,
-        password: req.body.password,
+        //Calculate the hash before (bcript + salt)
+        //as well as a decryptiption check
+        salt: req.body.salt,
+        hash : req.body.hash,
         type: req.body.type
     });
     user
