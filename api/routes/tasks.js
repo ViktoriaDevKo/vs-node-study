@@ -20,6 +20,7 @@ router.get('/', (req, res, next)=>{
 
  //adding a new task on the main page and through add new button
 router.post('/', (req, res, next)=>{
+    //TODO pass the user id from local storage or make a request in order to find id of the current user
     const task = new Task({
         _id: new mongoose.Types.ObjectId,
         task: req.body.task,
@@ -27,7 +28,7 @@ router.post('/', (req, res, next)=>{
         description: req.body.description,
         datePerf: new Date(req.body.datePerf),
         priority: req.body.priority,
-        _id_Account: req.body.AccID, 
+        _id_User: req.body.AccID, 
         tags: req.body.tags
 });
     task
