@@ -8,7 +8,7 @@ const taskSchema = mongoose.Schema({
     datePerf: Date,
     regularity: String,
     priority: String,
-    _id_Account: mongoose.Types.ObjectId, 
+    _id_User: mongoose.Types.ObjectId, 
     tags: Array
 });
 
