@@ -51,7 +51,7 @@ router.get('/:userId', (req, res, next)=>{
 router.post('/', (req, res, next)=>{
     //adding a new user on the registration page page
     const user = new User({
-        _id: new mongoose.Types.ObjectId,
+        _id: new mongoose.Types.ObjectId(),
         login: req.body.login,
         //Calculate the hash before (bcript + salt)
         //as well as a decryptiption check

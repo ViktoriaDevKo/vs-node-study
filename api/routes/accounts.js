@@ -23,7 +23,7 @@ router.post('/', (req, res, next)=>{
    //creating an acc throug main page
     const account = new Account({
         _id_User: req.body._id_User,
-        _id:  new mongoose.Types.ObjectId,
+        _id:  new mongoose.Types.ObjectId(),
         resourceName: req.body.resourceName,
         login: req.body.login,
         salt: req.body.salt,
