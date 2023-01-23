@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const taskSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
-    task: String,
-    type: String,
+    _id: mongoose.Schema.Types.ObjectId,
+    task: {Type: String, required: true},
+    type: {Type: String, required: true},
     description: String,
-    datePerf: Date,
+    datePerf: {Type: Date, required: true},
     priority: String,
-    _id_User: mongoose.Types.ObjectId, 
+    _id_User:  {Type: mongoose.Schema.Types.ObjectId, required: true}, 
     tags: Array
 });
 

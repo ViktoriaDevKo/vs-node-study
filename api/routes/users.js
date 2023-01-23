@@ -7,10 +7,24 @@ const User = require('../models/users');
 router.get('/', (req, res, next)=>{
     
     User.find()
+    .select('passing the needed fields names')
     .exec()
     .then(docs => {
-        console.log(docs);
-        res.status(200).json(docs);
+        //console.log(docs);
+        const response = {
+            count : docs.length,
+            products : docs.map(doc =>{
+                return {
+                    ...doc,
+                    request:{
+                        type: 'GET',
+                        url: 'http://localhost:3000/product/' + doc._id
+                    }
+                }
+            })  
+        };
+        res.status(200).json(response);
+        
     })
     .catch(err =>{
         console.log(err);
