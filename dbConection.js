@@ -26,7 +26,6 @@ mongoose.set('strictQuery', false);
 mongoose.connect(url,
     {
         useNewUrlParser: true,
-      //  useFindAndModify: false,
         useUnifiedTopology: true
     }
 );
