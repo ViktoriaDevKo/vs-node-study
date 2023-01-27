@@ -1,7 +1,7 @@
 {
     "env":{
         "MONGO_DB_LOCAL_ADRRESS": "mongodb://localhost:num/",
-        "MONGO_ATLAS_ADDRES": "mongodb+srv://admin:<pswd>@cluster0.6khsvhh.mongodb.net/?retryWrites=true&w=majority",
+        "MONGO_ATLAS_ADDRES": "mongodb+srv://admin:admin@dicio.t3hsnjk.mongodb.net/?retryWrites=true&w=majority",
         "ACCOUNT_SCHEME":"/accounts",
         "TASK_SCHEME":"/tasks",
         "REG_TASKS_SCHEME":"/regularTasks",

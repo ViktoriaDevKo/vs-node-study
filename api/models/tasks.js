@@ -5,9 +5,9 @@ const taskSchema = mongoose.Schema({
     task: {Type: String, required: true},
     type: {Type: String, required: true},
     description: String,
-    datePerf: {Type: Date, required: true},
+    datePerforming: {Type: Date, required: true, default: Date.now()},
     priority: String,
-    _id_User:  {Type: mongoose.Schema.Types.ObjectId, required: true}, 
+    _id_User:  {Type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Users'}, 
     tags: Array
 });
 

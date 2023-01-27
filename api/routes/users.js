@@ -106,7 +106,14 @@ router.delete("/:userId", (req, res, next) =>{
     })
     .exec()
     .then(result =>{
-        res.status(200).json(result);
+        res.status(200).json({
+            message : 'User deleted',
+            request:{
+                type: 'POST',
+                url: 'http://localhost:3000/users/',
+                body: {login: 'String', hash: 'String', salt:'String', type: 'Array'}
+            }
+        });
     })
     .catch(err => {
         console.log(err);
