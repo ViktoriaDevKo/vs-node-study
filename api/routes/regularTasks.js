@@ -24,7 +24,7 @@ router.post('/', (req, res, next)=>{
         task: req.body.task,
         type: req.body.type,
         description: req.body.description,
-        datePerf: req.body.datePerf,
+        dateStarting: req.body.datePerf,
         regularity: req.body.regularity,
         priority: req.body.priority,
         _id_User: req.body.type.ObjectId, 

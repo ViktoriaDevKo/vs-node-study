@@ -11,7 +11,7 @@ mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
       //  useFindAndModify: false,
         useUnifiedTopology: true
     });
-
+mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
