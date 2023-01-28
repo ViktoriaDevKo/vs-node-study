@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Account = require('../models/accounts');
+const User = require('../models/users');
 
 router.get('/', (req, res, next)=>{
     Account.find()
@@ -21,24 +22,30 @@ router.get('/', (req, res, next)=>{
 
 router.post('/', (req, res, next)=>{
    //creating an acc throug main page
-    const account = new Account({
-        _id_User: req.body._id_User,
-        _id:  new mongoose.Types.ObjectId(),
-        resourceName: req.body.resourceName,
-        login: req.body.login,
-        salt: req.body.salt,
-        hash : req.body.hash,
-        type: req.body.type,
-        tags: req.body.tags
-    });
-
-    account
-        .save()
+    User.findById(req.body._id_User)
+    .then(user =>{
+        if(!user){
+            return res.status(404).json({
+                message :"User not found"
+            });
+        }
+        const account = new Account({
+            _id_User: req.body._id_User,
+            _id:  new mongoose.Types.ObjectId(),
+            resourceName: req.body.resourceName,
+            login: req.body.login,
+            salt: req.body.salt,
+            hash : req.body.hash,
+            type: req.body.type,
+            tags: req.body.tags
+        });
+        return account
+            .save()})
         .then(result =>{
             console.log(result);
             res.status(200).json({
                 message: "/account/ post request",
-                createdAccount : account
+                createdAccount : result
             });
         })
         .catch(err => {
