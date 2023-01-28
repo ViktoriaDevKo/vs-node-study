@@ -40,11 +40,13 @@ router.get('/', (req, res, next)=>{
 router.get('/:userId', (req, res, next)=>{
     const id = req.params.userId;
     User.findById(id)
+    //.select('login type etc')
     .exec()
     .then(doc => {
         console.log("From database", doc);
         if(doc){
             res.status(200).json(doc);
+
         }else{
             res.status(404).json({ message: "No valid entry found for provided id"});
         }
@@ -77,9 +79,12 @@ router.post('/', (req, res, next)=>{
         .save()
         .then(result =>{
             console.log(result);
-            res.status(200).json({
-                message: "/user/ post request",
-                createdUser : user
+            res.status(201).json({
+                message: "User created sucsessfuly",
+                createdUser : {
+                    login: result.login,
+                    type: result.type
+                }
             });
         })
         .catch(err => {
@@ -101,7 +106,14 @@ router.delete("/:userId", (req, res, next) =>{
     })
     .exec()
     .then(result =>{
-        res.status(200).json(result);
+        res.status(200).json({
+            message : 'User deleted',
+            request:{
+                type: 'POST',
+                url: 'http://localhost:3000/users/',
+                body: {login: 'String', hash: 'String', salt:'String', type: 'Array'}
+            }
+        });
     })
     .catch(err => {
         console.log(err);
@@ -122,7 +134,9 @@ router.patch("/:userId", (req, res, next) =>{
     }, {$set: updateOps} )
     .exec()
     .then(result =>{
-        res.status(200).json(result);
+        res.status(200).json({
+            message : "user updated"
+        });
     })
     .catch(err => {
         console.log(err);

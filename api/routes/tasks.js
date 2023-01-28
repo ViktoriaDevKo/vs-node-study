@@ -22,20 +22,21 @@ router.get('/', (req, res, next)=>{
 router.post('/', (req, res, next)=>{
     //TODO pass the user id from local storage or make a request in order to find id of the current user
     const task = new Task({
-        _id: new mongoose.Types.ObjectId,
+        _id:  mongoose.Types.ObjectId(),
         task: req.body.task,
         type: req.body.type,
         description: req.body.description,
-        datePerf: new Date(req.body.datePerf),
+        datePerforming: new Date(req.body.datePerf),
         priority: req.body.priority,
         _id_User: req.body.AccID, 
         tags: req.body.tags
 });
     task
         .save()
+        .exec()
         .then(result =>{
             console.log(result);
-            res.status(200).json({
+            res.status(201).json({
                 message: "/task/ post request",
                 createdTask : task
             });
