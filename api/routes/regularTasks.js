@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 
 const RegTask = require('../models/regularTasks');
+const User = require('../models/users');
 
 router.get('/', (req, res, next)=>{
     RegTask.find()
@@ -20,20 +21,26 @@ router.get('/', (req, res, next)=>{
 
 
 router.post('/', (req, res, next)=>{
-    const regTask = new RegTask({
-        _id: new mongoose.Types.ObjectId,
-        task: req.body.task,
-        type: req.body.type,
-        description: req.body.description,
-        dateStarting: req.body.datePerf,
-        regularity: req.body.regularity,
-        priority: req.body.priority,
-        _id_User: req.body.type.ObjectId, 
-        tags: req.body.tags
-    });
-
-    regTask
-        .save()
+    User.findById(req.body._id_User)
+    .then(user =>{
+        if(!user){
+            return res.status(404).json({
+                message :"User not found"
+            });
+        }
+        const regTask = new RegTask({
+            _id: new mongoose.Types.ObjectId,
+            task: req.body.task,
+            type: req.body.type,
+            description: req.body.description,
+            dateStarting: req.body.datePerf,
+            regularity: req.body.regularity,
+            priority: req.body.priority,
+            _id_User: req.body.type.ObjectId, 
+            tags: req.body.tags
+        });
+        return regTask
+        .save()})
         .then(result =>{
             console.log(result);
             res.status(200).json({
