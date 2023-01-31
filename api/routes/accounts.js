@@ -9,6 +9,7 @@ const User = require('../models/users');
 
 router.get('/', (req, res, next)=>{
     Account.find()
+    .populate("_id_User", "login")
     .exec()
     .then(docs => {
         console.log(docs);
@@ -38,7 +39,7 @@ router.post('/', (req, res, next)=>{
             login: req.body.login,
             salt: req.body.salt,
             hash : req.body.hash,
-            typeOfAccount: req.body.type,
+            typeOfAccount: req.body.typeOfAccount,
             tags: req.body.tags
         });
         return account

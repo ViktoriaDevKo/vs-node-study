@@ -31,12 +31,12 @@ router.post('/', (req, res, next)=>{
         const regTask = new RegTask({
             _id: new mongoose.Types.ObjectId,
             task: req.body.task,
-            typeOfTask: req.body.type,
+            typeOfTask: req.body.typeOfTask,
             description: req.body.description,
-            dateStarting: req.body.datePerf,
+            dateStarting: req.body.dateStarting,
             regularity: req.body.regularity,
             priority: req.body.priority,
-            _id_User: req.body.type.ObjectId, 
+            _id_User: req.body._id_User, 
             tags: req.body.tags
         });
         return regTask
