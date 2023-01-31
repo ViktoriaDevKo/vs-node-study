@@ -13,7 +13,7 @@ const User = require("../models/users");
 
 router.get('/', (req, res, next)=>{
     Task.find()
-    .populate('_id_User')
+    .populate('_id_User', 'login')
     .exec()
     .then(docs => {
         console.log(docs);
