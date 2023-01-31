@@ -4,8 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 //
+
 mongoose.set('strictQuery', false);
-mongoose.connect( process.env.MONGO_DB_LOCAL_ADRRESS,
+mongoose.connect( process.env.MONGO_ATLAS_ADDRES,
     {
         useNewUrlParser: true,
       //  useFindAndModify: false,
@@ -17,6 +18,8 @@ db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
   console.log("Connected successfully");
 });
+
+
 
 const usersRoutes = require('./api/routes/users');
 const accountsRoutes = require('./api/routes/accounts');

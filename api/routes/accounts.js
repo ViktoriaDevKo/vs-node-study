@@ -36,7 +36,7 @@ router.post('/', (req, res, next)=>{
             login: req.body.login,
             salt: req.body.salt,
             hash : req.body.hash,
-            type: req.body.type,
+            typeOfAccount: req.body.type,
             tags: req.body.tags
         });
         return account

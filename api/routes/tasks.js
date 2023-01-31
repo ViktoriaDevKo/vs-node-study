@@ -3,10 +3,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Task = require("../models/tasks"); 
+const User = require("../models/users");
 
 router.get('/', (req, res, next)=>{
-
     Task.find()
+    .populate('_id_User')
     .exec()
     .then(docs => {
         console.log(docs);
@@ -21,19 +22,20 @@ router.get('/', (req, res, next)=>{
  //adding a new task on the main page and through add new button
 router.post('/', (req, res, next)=>{
     //TODO pass the user id from local storage or make a request in order to find id of the current user
-    const task = new Task({
-        _id:  mongoose.Types.ObjectId(),
-        task: req.body.task,
-        type: req.body.type,
-        description: req.body.description,
-        datePerforming: new Date(req.body.datePerf),
-        priority: req.body.priority,
-        _id_User: req.body.AccID, 
-        tags: req.body.tags
-});
-    task
-        .save()
-        .exec()
+    User.findById(req.body.AccID)
+    .then(user =>{
+            const task = new Task({
+                _id:  mongoose.Types.ObjectId(),
+                task: req.body.task,
+                typeOfTask: req.body.type,
+                description: req.body.description,
+                datePerforming: new Date(req.body.datePerf),
+                priority: req.body.priority,
+                _id_User: req.body.AccID, 
+                tags: req.body.tags
+        });
+    return task.save()
+    })
         .then(result =>{
             console.log(result);
             res.status(201).json({
@@ -51,7 +53,7 @@ router.post('/', (req, res, next)=>{
 
 });
 
-router.get('/all/:taskId', (req, res, next)=>{
+router.get('/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     Task.findById(id)
     .exec()
@@ -73,7 +75,7 @@ router.get('/all/:taskId', (req, res, next)=>{
     
 });
 
-router.patch('/all/:taskId', (req, res, next)=>{
+router.patch('/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     const updateOps = {};
     for(const ops of req.body){
@@ -94,7 +96,7 @@ router.patch('/all/:taskId', (req, res, next)=>{
     
 });
 
-router.delete('/all/:taskId', (req, res, next)=>{
+router.delete('/:taskId', (req, res, next)=>{
     const id = req.params.taskId;
     Task.remove({
         _id: id

@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     login: {type: String, required: true},
     salt: {type: String, required: true},
     hash : {type: String, required: true},
-    type: String
+    typeOfUser: String
 });
 
 module.exports = mongoose.model('Users', userSchema);

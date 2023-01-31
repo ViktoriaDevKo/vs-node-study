@@ -7,18 +7,19 @@ const User = require('../models/users');
 router.get('/', (req, res, next)=>{
     
     User.find()
-    .select('passing the needed fields names')
+    //.select('passing the needed fields names')
     .exec()
     .then(docs => {
         //console.log(docs);
         const response = {
             count : docs.length,
-            products : docs.map(doc =>{
+            users : docs.map(doc =>{
                 return {
-                    ...doc,
+                    login: doc.login,
+                    userId : doc._id,
                     request:{
                         type: 'GET',
-                        url: 'http://localhost:3000/product/' + doc._id
+                        url: 'http://127.0.0.1:3000/users/' + doc._id
                     }
                 }
             })  
@@ -73,7 +74,7 @@ router.post('/', (req, res, next)=>{
         //as well as a decryptiption check
         salt: req.body.salt,
         hash : req.body.hash,
-        type: req.body.type
+        typeOfUser: req.body.type
     });
     user
         .save()
@@ -110,7 +111,7 @@ router.delete("/:userId", (req, res, next) =>{
             message : 'User deleted',
             request:{
                 type: 'POST',
-                url: 'http://localhost:3000/users/',
+                url: 'http://http://127.0.0.1:3000/users/',
                 body: {login: 'String', hash: 'String', salt:'String', type: 'Array'}
             }
         });
