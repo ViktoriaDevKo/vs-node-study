@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const Task = require("../models/tasks"); 
 const User = require("../models/users");
 
+
+//let date_time = new Date();
+//let date = ("0" + date_time.getDate()).slice(-2);
+
+
+
 router.get('/', (req, res, next)=>{
     Task.find()
     .populate('_id_User')
@@ -27,11 +33,11 @@ router.post('/', (req, res, next)=>{
             const task = new Task({
                 _id:  mongoose.Types.ObjectId(),
                 task: req.body.task,
-                typeOfTask: req.body.type,
+                typeOfTask: req.body.typeOfTask,
                 description: req.body.description,
-                datePerforming: new Date(req.body.datePerf),
+                datePerforming: new Date(req.body.datePerforming),
                 priority: req.body.priority,
-                _id_User: req.body.AccID, 
+                _id_User: req.body._id_User, 
                 tags: req.body.tags
         });
     return task.save()

@@ -29,6 +29,11 @@ const regularTasksRoutes = require('./api/routes/regularTasks');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(
+    express.urlencoded({ extended: true })
+);
+    
+app.use(express.json());
 
 //handling CORS mistakes
 app.use((req, res, next)=>{
